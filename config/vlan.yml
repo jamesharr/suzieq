@@ -39,6 +39,8 @@ apply:
     "vlanshowplist-ifidx: interfaces?|",
     ]'
 
+  # ios-xr uses bridge-groups,
+
   junos-qfx:
     version: all
     command: show vlans detail | display json

@@ -19,6 +19,8 @@ apply:
     command: /sbin/bridge fdb show
     textfsm: textfsm_templates/linux_fdb.tfsm
 
+  # TBD. Bridging is in EFT release on xrv9k and pyvxr-8k
+
   linux:
     copy: cumulus
 

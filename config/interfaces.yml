@@ -63,11 +63,16 @@ apply:
           "virtualMac: _anycastMac?|",
         ]'
 
+  iosxr:
+    version: all
+    command: show interfaces detail
+    textfsm: textfsm_templates/cisco_xr_show_interfaces_detail.tfsm
+
   linux:
     version: all
     command: ip -d address show
     textfsm: textfsm_templates/linux_ipaddr.tfsm
-  
+
   junos-qfx:
     version: all
     command:

@@ -17,6 +17,11 @@ apply:
     command: top -bn 1 | head -17
     textfsm: textfsm_templates/cl_top.tfsm
 
+  iosxr:
+    version: all
+    command: show processes cpu
+    textfsm: textfsm_templates/cisco_xr_show_processes_cpu.tfsm
+
   linux:
     version: all
     command: top -bn 1 | head -17

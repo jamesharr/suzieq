@@ -36,7 +36,19 @@ apply:
         "hardwareProgrammed: inHardware?|False",
         "vias/*/nexthopAddr: nexthopIps?|[]",
         "vias/*/interface": oifs"]'
-  
+
+
+  iosxr:
+    version: all
+    command:
+      # Default VRF
+      - command: show route afi-all safi-all
+        textfsm: textfsm_templates/cisco_xr_show_route_all.tfsm
+      # All other VRFs
+      - command: show route vrf all afi-all safi-all
+        textfsm: textfsm_templates/cisco_xr_show_route_all.tfsm
+
+
   junos-qfx:
     version: all
     command:
@@ -67,7 +79,7 @@ apply:
   junos-mx:
     copy: junos-qfx
 
-  nxos: 
+  nxos:
     version: all
     command: show ip route vrf all | json
     normalize: 'TABLE_vrf/ROW_vrf/*:vrf-name-out:vrf|TABLE_addrf/ROW_addrf/TABLE_prefix/ROW_prefix/*?/[

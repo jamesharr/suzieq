@@ -39,6 +39,15 @@ apply:
   sonic:
     copy: cumulus
 
+  # This may not be what you're expecting. MPLS-EVPN doesn't have the
+  # concept of a VTEP. EVPN can also support some other configurations
+  # like VPWS, and notably I don't think IOS-XR uses VLANs directly, it'll
+  # use bridge-domains
+  iosxr:
+    version: all
+    command: show evpn evi detail
+    textfsm: textfsm_templates/cisco_xr_show_evpn_evi_detail.tfsm
+
   junos-qfx:
     version: all
     command:
@@ -63,7 +72,7 @@ apply:
         "context-router-mac/[0]/data: routerMac",
         "_entryType: _entryType?|l3",
         ]'
-        
+
       - command: show ethernet-switching vxlan-tunnel-end-point remote | display json
         normalize: 'vxlan-source-vtep-information/[0]/svtep-format/*:source-vtep-address:priVtepIp|vxlan-remote-vtep-information/*/[
         "remote-vtep-address/[0]/data: _floodVtepList",

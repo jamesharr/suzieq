@@ -27,11 +27,16 @@ apply:
     version: all
     command: bash timeout 5 df -hT
     textfsm: textfsm_templates/fs.tfsm
-    
+
   nxos:
     version: all
     command: run bash df -hT
     textfsm: textfsm_templates/fs.tfsm
+
+  iosxr:
+    version: all
+    command: show filesystem location all
+    textfsm: textfsm_templates/cisco_xr_show_filesystem.tfsm
 
   junos-qfx:
     version: all

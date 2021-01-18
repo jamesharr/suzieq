@@ -30,6 +30,8 @@ apply:
     "clagIntfs: mlagInterfacesList",
     ]'
 
+# IOS-XR really only does MLAG via EVPN-Multihoming
+
   sonic:
     version: all
     command: mclagdctl dump state
@@ -75,8 +77,8 @@ apply:
         "vpc-peer-status: state",
         "vpc-role: role",
         "vpc-peer-status-reason: _reason",
-        "vpc-peer-consistency: configSanity", 
-        "vpc-per-vlan-peer-consistency: _globalVlanConsistency", 
+        "vpc-peer-consistency: configSanity",
+        "vpc-per-vlan-peer-consistency: _globalVlanConsistency",
         "vpc-type-2-consistency: _globalType2Consistency ",
         "virtual-peer-link: _virtualPeerlink",
         "TABLE_peerlink/ROW_peerlink/peerlink-ifindex: peerLink",
@@ -108,4 +110,4 @@ apply:
         "TABLE_orphan_ports/ROW_orphan_ports/[*]?/vpc-orphan-ports: _orphanPortList",
         ]'
 
-        
+

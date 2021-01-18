@@ -37,6 +37,20 @@ apply:
       command: sudo vtysh -c 'show ip ospf neighbor detail'
       textfsm: textfsm_templates/frr_ospfnbr.tfsm
 
+  iosxr:
+    version: all
+    command:
+      # OSPFv2
+      - command: show ospf neighbor detail
+        textfsm: textfsm_templates/cisco_xr_show_ospf_neighbor_detail.tfsm
+      - command: show ospf vrf allneighbor detail
+        textfsm: textfsm_templates/cisco_xr_show_ospf_neighbor_detail.tfsm
+      # OSPFv3
+      - command: show ospfv3 neighbor detail
+        textfsm: textfsm_templates/cisco_xr_show_ospfv3_neighbor_detail.tfsm
+      - command: show ospfv3 vrf all neighbor detail
+        textfsm: textfsm_templates/cisco_xr_show_ospfv3_neighbor_detail.tfsm
+
   linux:
     copy: cumulus
 

@@ -22,15 +22,15 @@ apply:
     version: all
     command: show ip bgp neighbors vrf all
     normalize: 'vrfs/*/peerList/*/[
-        "asn: peerAsn?|0", 
-        "localAsn: asn?|0", 
+        "asn: peerAsn?|0",
+        "localAsn: asn?|0",
         "updateSource: source",
         "peerHostname: peerHostname?|",
         "peerAddress: peer",
         "peerAddress: origPeer",
         "peerAddress: peerIP?|",
         "vrf: vrf",
-        "maintenance: maintenance", 
+        "maintenance: maintenance",
         "establishFailHint: reason",
         "notificnReason: notificnReason?|",
         "lastErrorTimeInfo/time: lastDownTime?|0",
@@ -257,6 +257,16 @@ apply:
         "vrf-router-id: routerId",
         "entry-type: _entryType?|summary"
         ]'
+
+  iosxr:
+    version: all
+    command:
+      # Default VRF
+      - command: show bgp neighbors
+        textfsm: textfsm_templates/cisco_xr_show_bgp_neighbors.tfsm
+      # All other VRFs
+      - command: show bgp vrf all neighbors
+        textfsm: textfsm_templates/cisco_xr_show_bgp_neighbors.tfsm
 
   junos-qfx:
     version: all
